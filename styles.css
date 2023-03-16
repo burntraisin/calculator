@@ -1,0 +1,29 @@
+.calculator {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    row-gap: 5px;
+}
+
+.row-0, .row-1, .row-2, .row-3, .row-4 {
+    display: flex;
+    flex: initial;
+    gap: 5px;
+}
+
+#clear,
+#seven, #eight, #nine, #divide,
+#four, #five, #six, #times,
+#one, #two, #three, #minus,
+#zero, #equals, #plus {
+    height: 60px;
+    width: 60px;
+}
+
+#clear {
+    flex-grow: 1;
+}
+
+#equals {
+    flex-grow: 1;
+}
