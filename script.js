@@ -27,6 +27,12 @@ function operate(operator, a, b) {
 const container = document.querySelector(".display");
 let displayValue = "";
 
+let point = document.getElementById("point");
+point.addEventListener("click", () => {
+    container.textContent += ".";
+    displayValue += ".";
+});
+
 let numZero = document.getElementById("zero");
 numZero.addEventListener("click", () => {
     container.textContent += "0";
