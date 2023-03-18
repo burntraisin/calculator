@@ -1,6 +1,8 @@
 // BASIC MATH OPERATORS
 
 function add(a, b) {
+    a = +a;
+    b = +b;
     return a + b;
 }
 
@@ -20,12 +22,11 @@ function operate(operator, a, b) {
     return operator(a, b);
 }
 
-// DISPLAY 
-
-//convert displayValue string into a number
+// DISPLAY
 
 const container = document.querySelector(".display");
 let displayValue = "";
+const containerAnswer = document.createElement("div");
 
 let numZero = document.getElementById("zero");
 numZero.addEventListener("click", () => {
@@ -95,25 +96,33 @@ let firstValue;
 let division = document.getElementById("divide");
 division.addEventListener("click", () => {
     operation = "divide";
-    firstValue = displayValue;
+    firstValue = +displayValue; //convert displayValue string into a number
+    container.textContent += " ÷ ";
+    displayValue = ""; //reset displayValue to none
 });
 
 let multiplication = document.getElementById("times");
 multiplication.addEventListener("click", () => {
     operation = "multiply";
-    firstValue = displayValue;
+    firstValue = +displayValue;
+    container.textContent += " x ";
+    displayValue = "";
 });
 
 let subtraction = document.getElementById("minus");
 subtraction.addEventListener("click", () => {
     operation = "subtract";
-    firstValue = displayValue;
+    firstValue = +displayValue;
+    container.textContent += " - ";
+    displayValue = "";
 });
 
 let addition = document.getElementById("plus");
 addition.addEventListener("click", () => {
     operation = "add";
-    firstValue = displayValue;
+    firstValue = +displayValue;
+    container.textContent += " + ";
+    displayValue = "";
 });
 
 // WHEN EQUAL IS PRESSED
@@ -121,6 +130,27 @@ addition.addEventListener("click", () => {
 let solve = document.getElementById("equals");
 solve.addEventListener("click", () => {
     if (operation == "divide") {
-        console.log(operate(divide, firstValue, displayValue));
+        let solution = operate(divide, firstValue, displayValue);
+        containerAnswer.textContent = solution;
+        container.appendChild(containerAnswer);
+        displayValue = solution; //when another number input is made, the solution is made as the first argument
+    }
+    if (operation == "multiply") {
+        let solution = operate(multiply, firstValue, displayValue)
+        containerAnswer.textContent = solution;
+        container.appendChild(containerAnswer);
+        displayValue = solution;
+    }
+    if (operation == "subtract") {
+        let solution = operate(subtract, firstValue, displayValue)
+        containerAnswer.textContent = solution;
+        container.appendChild(containerAnswer);
+        displayValue = solution;
+    }
+    if (operation == "add") {
+        let solution = operate(add, firstValue, displayValue);
+        containerAnswer.textContent = solution;
+        container.appendChild(containerAnswer);
+        displayValue = solution;
     }
 });
