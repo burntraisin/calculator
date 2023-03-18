@@ -26,7 +26,6 @@ function operate(operator, a, b) {
 
 const container = document.querySelector(".display");
 let displayValue = "";
-const containerAnswer = document.createElement("div");
 
 let numZero = document.getElementById("zero");
 numZero.addEventListener("click", () => {
@@ -131,26 +130,22 @@ let solve = document.getElementById("equals");
 solve.addEventListener("click", () => {
     if (operation == "divide") {
         let solution = operate(divide, firstValue, displayValue);
-        containerAnswer.textContent = solution;
-        container.appendChild(containerAnswer);
+        container.textContent = solution;
         displayValue = solution; //when another number input is made, the solution is made as the first argument
     }
     if (operation == "multiply") {
         let solution = operate(multiply, firstValue, displayValue)
-        containerAnswer.textContent = solution;
-        container.appendChild(containerAnswer);
+        container.textContent = solution;
         displayValue = solution;
     }
     if (operation == "subtract") {
         let solution = operate(subtract, firstValue, displayValue)
-        containerAnswer.textContent = solution;
-        container.appendChild(containerAnswer);
+        container.textContent = solution;
         displayValue = solution;
     }
     if (operation == "add") {
         let solution = operate(add, firstValue, displayValue);
-        containerAnswer.textContent = solution;
-        container.appendChild(containerAnswer);
+        container.textContent = solution;
         displayValue = solution;
     }
 });
