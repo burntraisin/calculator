@@ -130,22 +130,35 @@ let solve = document.getElementById("equals");
 solve.addEventListener("click", () => {
     if (operation == "divide") {
         let solution = operate(divide, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
         container.textContent = solution;
         displayValue = solution; //when another number input is made, the solution is made as the first argument
     }
     if (operation == "multiply") {
         let solution = operate(multiply, firstValue, displayValue)
+        solution = Math.round(100 * solution) / 100;
         container.textContent = solution;
         displayValue = solution;
     }
     if (operation == "subtract") {
-        let solution = operate(subtract, firstValue, displayValue)
+        let solution = operate(subtract, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
         container.textContent = solution;
         displayValue = solution;
     }
     if (operation == "add") {
         let solution = operate(add, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
         container.textContent = solution;
         displayValue = solution;
     }
+});
+
+// WHEN CLEAR IS PRESSED
+
+let clear = document.getElementById("clear");
+clear.addEventListener("click", () => {
+    container.textContent = "";
+    firstValue = "";
+    displayValue = "";
 });
