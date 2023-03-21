@@ -21,26 +21,29 @@
 body {
     font-family: "quicksand-regular";
     font-size: 18px;
+    color: #1F363D;
+    background-color: ivory;
 }
 
 button {
     font-family: "quicksand-semibold";
     font-size: 18px;
-    background-color: #9EC1A3;
+    background-color: #CFE0C3;
     border: none;
     border-radius: 4px;
 }
 
 .display {
     height: 50px;
-    background-color: #1F363D;
+    background-color: #CFE0C3;
     border-radius: 4px;
     font-family: "quicksand-medium";
     font-size: 30px;
     text-align: right;
-    padding-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 5px;
     padding-right: 15px;
-    border: 2px solid;
+    margin-bottom: 10px;
 }
 
 .calculator-div {
@@ -55,9 +58,8 @@ button {
     flex-direction: column;
     row-gap: 10px;
     padding: 30px;
-    /* border: 2px solid; */
-    border-radius: 4px;
-    background-color: rgb(245, 245, 231);
+    border-radius: 10px;
+    background-color: #1F363D;
 }
 
 .row-0, .row-1, .row-2, .row-3, .row-4 {
@@ -73,11 +75,19 @@ button {
 #zero, #equals, #plus, #point {
     height: 80px;
     width: 80px;
+    color: #1F363D;
 }
 
 #clear {
     flex-grow: 1;
-    background-color: #CFE0C3;
+    background-color: #1F363D;
+    color: #CFE0C3;
+    border: 2px solid #CFE0C3;
+}
+
+#clear:hover {
+    background-color: rgba(207, 224, 194, 0.192);
+    color: #CFE0C3;
 }
 
 #equals {
@@ -85,7 +95,28 @@ button {
 }
 
 #divide, #times, #minus, #plus, #equals {
-    background-color: #70A9A1;
+    background-color: #9EC1A3;
+}
+#divide:hover, #times:hover, #minus:hover, #plus:hover, #equals:hover {
+    background-color: ivory;
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding-bottom: 30px;
+    font-family: "quicksand-semibold";
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button:hover {
+    background-color: ivory;
 }
 
 /*
