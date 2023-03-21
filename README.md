@@ -1,6 +1,6 @@
 # calculator
 
-This is a calculator for TOP's Foundation Course.
+This is a calculator for TOP's Foundation Course. Here's the [live link](https://burntraisin.github.io/calculator/)!
 
 ## What I learned
 
