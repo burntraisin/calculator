@@ -15,6 +15,8 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    a = +a;
+    b = +b;
     return a / b;
 }
 
@@ -100,45 +102,108 @@ let firstValue;
 
 let division = document.getElementById("divide");
 division.addEventListener("click", () => {
-    operation = "divide";
+    if (operation == "multiply") {
+        let solution = operate(multiply, firstValue, displayValue)
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
+    if (operation == "subtract") {
+        let solution = operate(subtract, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
+    if (operation == "add") {
+        let solution = operate(add, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
+    if (operation == "divide") {
+        let solution = operate(divide, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
     firstValue = +displayValue; //convert displayValue string into a number
+    operation = "divide";
     container.textContent += " ÷ ";
     displayValue = ""; //reset displayValue to none
 });
 
 let multiplication = document.getElementById("times");
 multiplication.addEventListener("click", () => {
-    operation = "multiply";
+    if (operation == "divide") {
+        let solution = operate(divide, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
+    if (operation == "subtract") {
+        let solution = operate(subtract, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
+    if (operation == "add") {
+        let solution = operate(add, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
+    if (operation == "multiply") {
+        let solution = operate(multiply, firstValue, displayValue)
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
     firstValue = +displayValue;
+    operation = "multiply";
     container.textContent += " x ";
     displayValue = "";
 });
 
 let subtraction = document.getElementById("minus");
 subtraction.addEventListener("click", () => {
-    operation = "subtract";
+    if (operation == "divide") {
+        let solution = operate(divide, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
+    if (operation == "multiply") {
+        let solution = operate(multiply, firstValue, displayValue)
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
+    if (operation == "add") {
+        let solution = operate(add, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
+    if (operation == "subtract") {
+        let solution = operate(subtract, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        displayValue = solution;
+    }
     firstValue = +displayValue;
+    operation = "subtract";
     container.textContent += " - ";
     displayValue = "";
 });
 
 let addition = document.getElementById("plus");
 addition.addEventListener("click", () => {
-    operation = "add";
-    firstValue = +displayValue;
-    container.textContent += " + ";
-    displayValue = "";
-});
-
-// WHEN EQUAL IS PRESSED
-
-let solve = document.getElementById("equals");
-solve.addEventListener("click", () => {
+    //if operation equals add (i.e. there is one already in progress) then solve and update firstvalue 
     if (operation == "divide") {
         let solution = operate(divide, firstValue, displayValue);
         solution = Math.round(100 * solution) / 100;
         container.textContent = solution;
-        displayValue = solution; //when another number input is made, the solution is made as the first argument
+        displayValue = solution;
     }
     if (operation == "multiply") {
         let solution = operate(multiply, firstValue, displayValue)
@@ -158,6 +223,48 @@ solve.addEventListener("click", () => {
         container.textContent = solution;
         displayValue = solution;
     }
+    firstValue = +displayValue;
+    operation = "add";
+    container.textContent += " + ";
+    displayValue = "";
+});
+
+// WHEN EQUAL IS PRESSED
+
+let solve = document.getElementById("equals");
+solve.addEventListener("click", () => {
+    if (operation == "divide") {
+        let solution = operate(divide, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        firstValue = solution;
+        operation = "divide";
+        displayValue = "1";
+    }
+    if (operation == "multiply") {
+        let solution = operate(multiply, firstValue, displayValue)
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        firstValue = solution;
+        operation = "multiply";
+        displayValue = "1";
+    }
+    if (operation == "subtract") {
+        let solution = operate(subtract, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        firstValue = solution;
+        operation = "subtract";
+        displayValue = "0";
+    }
+    if (operation == "add") {
+        let solution = operate(add, firstValue, displayValue);
+        solution = Math.round(100 * solution) / 100;
+        container.textContent = solution;
+        firstValue = solution;
+        operation = "add";
+        displayValue = "0";
+    }
 });
 
 // WHEN CLEAR IS PRESSED
@@ -167,4 +274,5 @@ clear.addEventListener("click", () => {
     container.textContent = "";
     firstValue = "";
     displayValue = "";
+    operation = "";
 });
